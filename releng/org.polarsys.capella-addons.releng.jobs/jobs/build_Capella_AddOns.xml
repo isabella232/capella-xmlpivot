@@ -1,0 +1,7 @@
+<project name="Capella_AddOns">
+
+	<echo message="Running Job AddOn_XMLPivot in Capella_AddOns_AddOn_XMLPivot/releng"/>
+	<ant dir="Capella_AddOns_AddOn_XMLPivot/releng"/>
+
+
+</project>
