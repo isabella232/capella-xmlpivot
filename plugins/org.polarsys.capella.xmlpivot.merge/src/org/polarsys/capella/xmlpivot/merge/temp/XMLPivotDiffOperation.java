@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -105,26 +105,28 @@ public class XMLPivotDiffOperation extends DiffOperation {
   }
 
   /**
-   * Create the differences related to the attributes for the given match
-   * @param match_p a non-null, non-partial match
+   * @see org.eclipse.emf.diffmerge.impl.helpers.DiffOperation#detectAllAttributeDifferences(org.eclipse.emf.diffmerge.api.IMatch, boolean)
    */
   @Override
-  protected void createAllAttributeDifferences(IMatch match_p) {
+  protected boolean detectAllAttributeDifferences(IMatch match_p, boolean create_p) {
     assert (match_p != null) && !match_p.isPartial();
+    boolean result = false;
     EClass eClass = match_p.get(Role.TARGET).eClass();
     for (EAttribute attribute : eClass.getEAllAttributes()) {
       if (getCastedDiffPolicy().coverFeature(match_p, attribute)) {
-        createAttributeDifferences(match_p, attribute);
+        result |= detectAttributeDifferences(match_p, attribute, create_p);
       }
     }
+    return result;
   }
 
   /**
-   * @see org.eclipse.emf.diffmerge.impl.helpers.DiffOperation#createAttributeDifferences(org.eclipse.emf.diffmerge.api.IMatch, org.eclipse.emf.ecore.EAttribute)
+   * @see org.eclipse.emf.diffmerge.impl.helpers.DiffOperation#detectAttributeDifferences(org.eclipse.emf.diffmerge.api.IMatch, org.eclipse.emf.ecore.EAttribute, boolean)
    */
   @Override
-  protected void createAttributeDifferences(IMatch match_p, EAttribute attribute_p) {
+  protected boolean detectAttributeDifferences(IMatch match_p, EAttribute attribute_p, boolean create_p) {
     assert (match_p != null) && !match_p.isPartial() && (attribute_p != null);
+    boolean result = true;
     IFeaturedModelScope targetScope = getComparison().getScope(Role.TARGET);
     IFeaturedModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
     EObject target = match_p.get(Role.TARGET);
@@ -142,7 +144,10 @@ public class XMLPivotDiffOperation extends DiffOperation {
         if (checkOrder) {
           if (matchingReferenceValue.getIndex() < maxIndex) {
             // Ordering difference
+            if (!create_p)
+              return true;
             createAttributeOrderDifference(match_p, attribute_p, targetValue, matchingReferenceValue.getObject());
+            result = true;
             checkOrder = false;
           } else {
             maxIndex = matchingReferenceValue.getIndex();
@@ -154,14 +159,21 @@ public class XMLPivotDiffOperation extends DiffOperation {
     }
     for (Object remainingTargetValue : remainingTargetValues) {
       if (getCastedDiffPolicy().coverValue(remainingTargetValue, attribute_p)) {
+        if (!create_p)
+          return true;
         createAttributeValueDifference(match_p, attribute_p, remainingTargetValue, Role.TARGET, false);
+        result = true;
       }
     }
     for (Object remainingReferenceValue : remainingReferenceValues) {
       if (getCastedDiffPolicy().coverValue(remainingReferenceValue, attribute_p)) {
+        if (!create_p)
+          return true;
         createAttributeValueDifference(match_p, attribute_p, remainingReferenceValue, Role.REFERENCE, false);
+        result = true;
       }
     }
+    return result;
   }
 
   /**

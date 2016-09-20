@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.polarsys.capella.xmlpivot.common
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: com.google.guava;bundle-version="[11.0.0,13.0.0]";visibility:=reexport,
+Require-Bundle: com.google.guava;visibility:=reexport,
  org.apache.log4j,
  org.eclipse.emf.ecore,
  org.eclipse.emf.codegen.ecore,
