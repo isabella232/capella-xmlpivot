@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -125,7 +125,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-import org.polarsys.capella.xmlpivot.XMLPivotActivator;
 import org.polarsys.capella.xmlpivot.XMLPivotResourceFactory;
 import org.polarsys.capella.xmlpivot.ui.XMLPivotUIActivator;
 
@@ -1796,30 +1795,5 @@ public class CapellamodellerEditor
   protected boolean showOutlineView() {
     return true;
   }
-  
-  public static class Dynamic extends CapellamodellerEditor {
-    
-    public static final String EDITOR_ID = "org.polarsys.capella.xmlpivot.ui.editor.dynamic"; //$NON-NLS-1$
 
-	@Override
-	/**
-	 * Overridden for loading XMLPivots dynamically without generated model/edit code.
-	 * {@inheritDoc}
-	 */
-    protected ComposedAdapterFactory createComposedAdapterFactory(){
-      return new ComposedAdapterFactory();
-    }
-    
-    @Override
-    /**
-     * Install a 'blind' package registry to avoid loading generated packages
-     */
-    protected void initializeEditingDomain(){
-      super.initializeEditingDomain();
-      getEditingDomain().getResourceSet().setPackageRegistry(XMLPivotActivator.getDefault().getDynamicPackageRegistry());
-    }
-    
-    
-  }
-  
 }

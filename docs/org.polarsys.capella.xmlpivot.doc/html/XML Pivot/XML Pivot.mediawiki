@@ -74,4 +74,18 @@ It is possible to import a simplified Capella model and merge it directly into a
 
 The XMLPivot tool comes with automatic support for metamodel extensions provided through viewpoint addons. During export, all required external viewpoint metamodels are transformed automatically into a corresponding meta model that is compatible with the simplified Capella meta model. The .ecore file for the simplified viewpoint meta model is then stored inside the “Simplified Capella Metamodel” project, alongside the simplified Capella meta model .ecore files.
 
+== Developer Information ==
+The following sections are of interest for XML Pivot developers.
 
+=== Code generation for the simplified Capella metamodel === 
+The plugin org.polarsys.capella.core.semantic.data.gen contained generated EMF code for the simplified Capella metamodel. This code is not needed by the XML Pivot addon and was removed from XML Pivot in version 1.1.0. The following two steps show how developers can generate this code for their own projects:
+
+==== Launch the semantic metamodel generation application ====
+The semantic metamodel generation application is a capella command line application that creates all required .ecore and .genmodel files. The following command runs this application from a command line:
+
+<code>C:\capella>capella.exe -data C:\workspace -application -appid org.polarsys.capella.xmlpivot.commandline.m2extraction</code>
+
+This will create a project org.polarsys.capella.core.semantic.data.gen in the specified workspace (in this example <code>C:\workspace</code>)
+
+==== Generate code ====
+Launch capella and switch to the workspace that contains the generated project, open the CapellaModeller.genmodel file and select "Generate Model Code" from the context menu.
