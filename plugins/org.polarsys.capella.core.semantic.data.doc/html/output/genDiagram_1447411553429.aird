@@ -20,6 +20,51 @@
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/sharedmodel.aird#__QHBMIn9EeWrQufLids92Q"/>
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/fa.aird#_ZS5NoIn-EeWrQufLids92Q"/>
   <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/fa.aird#_evZdIIn_EeWSMbyDJlmx_Q"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/emde.aird#_qoXlAKGrEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/activity.aird#_w1z-sKGrEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/behavior.aird#_9y8jgKGrEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/modellingcore.aird#_DmAHQKGsEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacommon.aird#_RoqwwKGsEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacore.aird#_sFJ2oKGsEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellamodeller.aird#_K3cfIKGtEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/cs.aird#_U6AwQKGtEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/ctx.aird#_0Xg48KGtEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/epbs.aird#_ZtdbsKGuEeabu648dWvnEA"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/emde.aird#_Pd_IQKG0Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/activity.aird#_XD80EKG0Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/behavior.aird#_nUOkoKG0Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/modellingcore.aird#_uRYkAKG0Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacommon.aird#_-7slMKG0Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacore.aird#_dF8WQKG1Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellamodeller.aird#_AKOYYKG2Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/cs.aird#_JhiGAKG2Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/ctx.aird#_rJG5kKG2Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/epbs.aird#_91OacKG2Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/fa.aird#_H_sqYKG3Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/information.aird#_ij2CAKG4Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/interaction.aird#_e8gScKG5Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/la.aird#_s0nRwKG5Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/oa.aird#_GWtL8KG6Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/pa.aird#_u-eEwKG6Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/requirement.aird#_p30CEKG8Eea0EopZ-d2yMg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/emde.aird#_F-VuQKHFEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/activity.aird#_RbUH4KHFEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/behavior.aird#_p8CrsKHFEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/modellingcore.aird#_07zk4KHFEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacommon.aird#_OMkegKHGEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellacore.aird#_3jYOoKHGEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/capellamodeller.aird#_l_tuIKHHEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/cs.aird#_yWMioKHHEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/ctx.aird#_fThtgKHIEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/epbs.aird#_4n5UwKHIEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/fa.aird#_G8VDsKHJEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/information.aird#_WlJ9QKHKEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/interaction.aird#_nGKcAKHLEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/la.aird#_1HnkkKHLEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/oa.aird#_JyXVUKHMEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/pa.aird#_rBAEcKHMEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/requirement.aird#_K0WhUKHNEeajo7yZUlb-rg"/>
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="diagrams/sharedmodel.aird#_bp3F4KHNEeajo7yZUlb-rg"/>
   <semanticResources>platform:/resource/org.polarsys.capella.core.semantic.data.gen/model/emde.ecore</semanticResources>
   <semanticResources>platform:/resource/org.polarsys.capella.core.semantic.data.gen/model/activity.ecore</semanticResources>
   <semanticResources>platform:/resource/org.polarsys.capella.core.semantic.data.gen/model/behavior.ecore</semanticResources>
