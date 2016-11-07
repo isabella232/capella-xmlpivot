@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -11,9 +11,8 @@
 package org.polarsys.capella.xmlpivot.test;
 
 import org.junit.Test;
-import org.polarsys.capella.xmlpivot.common.CapellaPackageRegistry;
+import org.polarsys.capella.core.model.helpers.registry.CapellaPackageRegistry;
 import org.polarsys.capella.xmlpivot.extraction.XMLPivotExtractor;
-
 
 import junit.framework.TestCase;
 
@@ -32,7 +31,7 @@ public class XMLPivotExtractorTest extends TestCase {
 		extractor.modelPluginClass = "corg.polarsys.capella.semantic.data.capellamodeller.CapellaModellerPlugin";
 		extractor.editPluginClass = "org.polarsys.capella.semantic.data.capellamodeller.provider.CapellaymodellerEditPlugin";
 		extractor.editorPluginClass = "org.polarsys.capella.semantic.data.capellamodeller.presentation.CapellamodellerEditorPlugin";
-		extractor.pluginVersion = "1.0.0"; // TODO maybe derive this from source package version or the plugin that is providing it..
+		extractor.pluginVersion = "1.1.0"; // TODO maybe derive this from source package version or the plugin that is providing it..
 		extractor.sourcePackages = CapellaPackageRegistry.getAllCapellaPackages();
 		extractor.bootstrap = true;
 		extractor.build().extract();
