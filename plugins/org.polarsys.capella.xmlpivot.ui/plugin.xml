@@ -180,21 +180,6 @@
             wizardId="org.polarsys.capella.xmlpivot.ui.newCapellaProjectFromExistingModel">
          <enablement></enablement>
       </commonWizard>
-      <actionProvider
-            class="org.polarsys.capella.xmlpivot.ui.XMLPivotActionProvider"
-            id="capella.project.explorer.actions.xmlpivot">
-         <enablement>
-            <and>
-               <instanceof
-                     value="org.eclipse.core.resources.IFile">
-               </instanceof>
-               <test
-                     property="org.eclipse.core.resources.extension"
-                     value="xml">
-               </test>
-            </and>
-         </enablement>
-      </actionProvider>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
