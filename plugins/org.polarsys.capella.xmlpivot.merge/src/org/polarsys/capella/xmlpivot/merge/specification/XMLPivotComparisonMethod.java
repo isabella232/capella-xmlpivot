@@ -30,7 +30,7 @@ public class XMLPivotComparisonMethod extends CapellaComparisonMethod {
    * @param ancestorScopeSpec_p an optional scope specification
    */
   public XMLPivotComparisonMethod(IModelScopeDefinition leftScopeSpec_p, IModelScopeDefinition rightScopeSpec_p, IModelScopeDefinition ancestorScopeSpec_p) {
-    super(leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p);
+    super(leftScopeSpec_p, rightScopeSpec_p, ancestorScopeSpec_p, null);
   }
 
   /**

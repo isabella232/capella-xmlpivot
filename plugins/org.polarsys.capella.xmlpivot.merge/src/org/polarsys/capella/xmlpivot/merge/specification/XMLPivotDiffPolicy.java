@@ -16,6 +16,7 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.diffdata.EMatch;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -106,6 +107,16 @@ public class XMLPivotDiffPolicy implements IDiffPolicy {
   @Override
   public boolean coverValue(Object value_p, EAttribute attribute_p) {
     return decorated.coverValue(value_p, attribute_p);
+  }
+
+  @Override
+  public boolean considerEqualOutOfScope(EObject arg0, EObject arg1, EReference arg2) {
+    return false;
+  }
+
+  @Override
+  public boolean coverOutOfScopeValue(EObject arg0, EReference arg1) {
+    return false;
   }
 
 }

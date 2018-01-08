@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
-import org.eclipse.emf.diffmerge.util.structures.comparable.ComparableLinkedList;
-import org.eclipse.emf.diffmerge.util.structures.comparable.ComparableTreeMap;
-import org.eclipse.emf.diffmerge.util.structures.comparable.IComparableStructure;
+import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableLinkedList;
+import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableTreeMap;
+import org.eclipse.emf.diffmerge.structures.common.comparable.IComparableStructure;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -64,7 +64,7 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
 
   /** The set of Capella types which may normally have no more than one instance per model */
   protected static Collection<EClass> __UNIQUELY_OCCURRING_TYPES = null;
-  
+
   /**
    * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#getApplicableCriteria()
    */
@@ -75,38 +75,50 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
 
   /**
    * Return a unique name for the given named element which has no naming requirement
-   * @param element_p a non-null element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope should be considered or the underlying EMF model
+   * 
+   * @param element_p
+   *          a non-null element
+   * @param scope_p
+   *          a non-null scope that covers element_p
+   * @param inScopeOnly_p
+   *          whether only the scope should be considered or the underlying EMF model
    * @return a potentially null string
    */
-  protected String getFreelyNamedElementUniqueName(AbstractNamedElement element_p, IModelScope scope_p, boolean inScopeOnly_p) {
+  protected String getFreelyNamedElementUniqueName(AbstractNamedElement element_p, IModelScope scope_p,
+      boolean inScopeOnly_p) {
     String result = null;
     if (element_p instanceof FunctionalExchange) {
       // Functional Exchange
       FunctionalExchange casted = (FunctionalExchange) element_p;
-      result = getTwoEndedElementUniqueName(casted, casted.getSourceFunctionOutputPort(), casted.getTargetFunctionInputPort(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementUniqueName(casted, casted.getSourceFunctionOutputPort(),
+          casted.getTargetFunctionInputPort(), scope_p, inScopeOnly_p);
     } else if (element_p instanceof ComponentExchange) {
       // Component Exchange
       ComponentExchange casted = (ComponentExchange) element_p;
-      result = getTwoEndedElementUniqueName(casted, casted.getSourcePort(), casted.getTargetPort(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementUniqueName(casted, casted.getSourcePort(), casted.getTargetPort(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof PhysicalLink) {
       // Physical Link
       PhysicalLink casted = (PhysicalLink) element_p;
-      result = getTwoEndedElementUniqueName(casted, casted.getSourcePhysicalPort(), casted.getTargetPhysicalPort(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementUniqueName(casted, casted.getSourcePhysicalPort(), casted.getTargetPhysicalPort(),
+          scope_p, inScopeOnly_p);
     }
     return result;
   }
 
   /**
-   * Return an ID based on the semantics of the given element as part of the
-   * Capella Project structure, if applicable
-   * @param element_p a non-null element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope should be considered or the underlying EMF model
+   * Return an ID based on the semantics of the given element as part of the Capella Project structure, if applicable
+   * 
+   * @param element_p
+   *          a non-null element
+   * @param scope_p
+   *          a non-null scope that covers element_p
+   * @param inScopeOnly_p
+   *          whether only the scope should be considered or the underlying EMF model
    * @return a potentially null object
    */
-  protected IComparableStructure<?> getCapellaProjectStructureSemanticID(EObject element_p, IModelScope scope_p, boolean inScopeOnly_p) {
+  protected IComparableStructure<?> getCapellaProjectStructureSemanticID(EObject element_p, IModelScope scope_p,
+      boolean inScopeOnly_p) {
     IComparableStructure<?> result = null;
     EClass type = element_p.eClass();
     final String PROJECT_STRUCTURE_ID_PREFIX = "capella"; //$NON-NLS-1$
@@ -125,7 +137,8 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
           list.add("::" + containment.getName()); //$NON-NLS-1$
           result = list;
         }
-      } else if ((container instanceof ComponentContext) && (element_p instanceof Part) && isSystemComponent(((Part) element_p).getType())) {
+      } else if ((container instanceof ComponentContext) && (element_p instanceof Part)
+          && isSystemComponent(((Part) element_p).getType())) {
         // Part of System in ComponentContext
         result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p, "::systemPart"); //$NON-NLS-1$
       }
@@ -135,21 +148,26 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
 
   /**
    * Return whether the given Capella type represents the system
-   * @param capellaType_p a non-null element
+   * 
+   * @param capellaType_p
+   *          a non-null element
    */
   protected boolean isSystemComponent(Type capellaType_p) {
     return (capellaType_p instanceof Component) && (capellaType_p.eContainer() instanceof ModellingArchitecture);
   }
 
   /**
-   * Return whether the given element is required to have a unique name, and if so
-   * whether it is within its container or solely among its containment siblings
-   * @param element_p a non-null element
+   * Return whether the given element is required to have a unique name, and if so whether it is within its container or
+   * solely among its containment siblings
+   * 
+   * @param element_p
+   *          a non-null element
    * @return a non-null object
    */
   protected UniqueNameRequirementKind getNamingRequirement(AbstractNamedElement element_p) {
     UniqueNameRequirementKind result;
-    if ((element_p instanceof FunctionalExchange) || (element_p instanceof ComponentExchange) || (element_p instanceof PhysicalLink) || isTechnical(element_p)) {
+    if ((element_p instanceof FunctionalExchange) || (element_p instanceof ComponentExchange)
+        || (element_p instanceof PhysicalLink) || isTechnical(element_p)) {
       result = UniqueNameRequirementKind.NONE;
     } else if (element_p instanceof Part) {
       result = UniqueNameRequirementKind.IN_CONTAINMENT;
@@ -164,18 +182,23 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
   }
 
   /**
-   * Return a semantic ID for the given element according to the additional two
-   * given elements
-   * @param element_p a non-null element
-   * @param end1_p a potentially null element
-   * @param end2_p a potentially null element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope should be considered or the underlying EMF model
+   * Return a semantic ID for the given element according to the additional two given elements
+   * 
+   * @param element_p
+   *          a non-null element
+   * @param end1_p
+   *          a potentially null element
+   * @param end2_p
+   *          a potentially null element
+   * @param scope_p
+   *          a non-null scope that covers element_p
+   * @param inScopeOnly_p
+   *          whether only the scope should be considered or the underlying EMF model
    * @return a potentially null string
    */
   @SuppressWarnings("unchecked")
-  protected ComparableTreeMap<String, IComparableStructure<String>> getTwoEndedElementSemanticID(EObject element_p, EObject end1_p, EObject end2_p,
-      IModelScope scope_p, boolean inScopeOnly_p) {
+  protected ComparableTreeMap<String, IComparableStructure<String>> getTwoEndedElementSemanticID(EObject element_p,
+      EObject end1_p, EObject end2_p, IModelScope scope_p, boolean inScopeOnly_p) {
     ComparableTreeMap<String, IComparableStructure<String>> result = null;
     if ((end1_p != null) && (end2_p != null)) {
       IComparableStructure<?> id1 = getMatchID(end1_p, scope_p);
@@ -196,21 +219,29 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
   }
 
   /**
-   * Return a name for the given element which is characterized by the additional two
-   * given elements
-   * @param element_p a non-null element
-   * @param end1_p a potentially null element
-   * @param end2_p a potentially null element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope should be considered or the underlying EMF model
+   * Return a name for the given element which is characterized by the additional two given elements
+   * 
+   * @param element_p
+   *          a non-null element
+   * @param end1_p
+   *          a potentially null element
+   * @param end2_p
+   *          a potentially null element
+   * @param scope_p
+   *          a non-null scope that covers element_p
+   * @param inScopeOnly_p
+   *          whether only the scope should be considered or the underlying EMF model
    * @return a potentially null string
    */
-  protected String getTwoEndedElementUniqueName(AbstractNamedElement element_p, EObject end1_p, EObject end2_p, IModelScope scope_p, boolean inScopeOnly_p) {
+  protected String getTwoEndedElementUniqueName(AbstractNamedElement element_p, EObject end1_p, EObject end2_p,
+      IModelScope scope_p, boolean inScopeOnly_p) {
     String result = null;
     if ((end1_p != null) && (end2_p != null)) {
-      ComparableLinkedList<String> qname1 = getContainerRelativeID(end1_p, scope_p, inScopeOnly_p, MatchCriterionKind.NAME);
+      ComparableLinkedList<String> qname1 = getContainerRelativeID(end1_p, scope_p, inScopeOnly_p,
+          MatchCriterionKind.NAME);
       if (qname1 != null) {
-        ComparableLinkedList<String> qname2 = getContainerRelativeID(end2_p, scope_p, inScopeOnly_p, MatchCriterionKind.NAME);
+        ComparableLinkedList<String> qname2 = getContainerRelativeID(end2_p, scope_p, inScopeOnly_p,
+            MatchCriterionKind.NAME);
         if (qname2 != null) {
           StringBuilder builder = new StringBuilder();
           String mainName = element_p.getName();
@@ -228,12 +259,13 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
   }
 
   /**
-   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#getSemanticID(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
+   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#getSemanticID(org.eclipse.emf.ecore.EObject,
+   *      org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
    */
   @Override
   protected IComparableStructure<?> getSemanticID(EObject element_p, IModelScope scope_p, boolean inScopeOnly_p) {
     // Intended return types: ComparableLinkedList<String>,
-    //  ComparableTreeMap<String, ComparableLinkedList<String>>
+    // ComparableTreeMap<String, ComparableLinkedList<String>>
     IComparableStructure<?> result = null;
     if (isTechnical(element_p)) {
       result = getTechnicalElementSemanticID(element_p, scope_p, inScopeOnly_p);
@@ -245,14 +277,18 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
   }
 
   /**
-   * Return an ID based on the semantics of the given technical element
-   * Precondition: isTechnical(element_p)
-   * @param element_p a non-null element
-   * @param scope_p a non-null scope that covers element_p
-   * @param inScopeOnly_p whether only the scope should be considered or the underlying EMF model
+   * Return an ID based on the semantics of the given technical element Precondition: isTechnical(element_p)
+   * 
+   * @param element_p
+   *          a non-null element
+   * @param scope_p
+   *          a non-null scope that covers element_p
+   * @param inScopeOnly_p
+   *          whether only the scope should be considered or the underlying EMF model
    * @return a potentially null object
    */
-  protected IComparableStructure<?> getTechnicalElementSemanticID(EObject element_p, IModelScope scope_p, boolean inScopeOnly_p) {
+  protected IComparableStructure<?> getTechnicalElementSemanticID(EObject element_p, IModelScope scope_p,
+      boolean inScopeOnly_p) {
     IComparableStructure<?> result = null;
     if (element_p instanceof AbstractCapabilityGeneralization) {
       AbstractCapabilityGeneralization casted = (AbstractCapabilityGeneralization) element_p;
@@ -260,11 +296,13 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
     } else if (element_p instanceof AbstractTrace) {
       // Abstract Trace
       AbstractTrace casted = (AbstractTrace) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getSourceElement(), casted.getTargetElement(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getSourceElement(), casted.getTargetElement(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof AbstractDeploymentLink) {
       // Abstract Deployment Link
       AbstractDeploymentLink casted = (AbstractDeploymentLink) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getDeployedElement(), casted.getLocation(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getDeployedElement(), casted.getLocation(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof Generalization) {
       // Generalization
       Generalization casted = (Generalization) element_p;
@@ -276,7 +314,8 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
     } else if (element_p instanceof CapabilityExploitation) {
       // Capability Exploitation
       CapabilityExploitation casted = (CapabilityExploitation) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getCapability(), casted.getMission(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getCapability(), casted.getMission(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof ValuePart) {
       // Value Part
       Property property = ((ValuePart) element_p).getReferencedProperty();
@@ -288,28 +327,35 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
       result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p, ((KeyValue) element_p).getKey());
     } else if (element_p instanceof EnumerationPropertyLiteral) {
       // Enumeration Property Literal
-      result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p, ((EnumerationPropertyLiteral) element_p).getName());
+      result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p,
+          ((EnumerationPropertyLiteral) element_p).getName());
     } else if ((element_p instanceof EnumerationPropertyType) && (element_p.eContainer() instanceof Project)) {
       // Enumeration Property Type in Project
-      result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p, ((EnumerationPropertyType) element_p).getName());
+      result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p,
+          ((EnumerationPropertyType) element_p).getName());
     } else if (element_p instanceof InterfaceUse) {
       InterfaceUse casted = (InterfaceUse) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getInterfaceUser(), casted.getUsedInterface(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getInterfaceUser(), casted.getUsedInterface(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof InterfaceImplementation) {
       InterfaceImplementation casted = (InterfaceImplementation) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getInterfaceImplementor(), casted.getImplementedInterface(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getInterfaceImplementor(), casted.getImplementedInterface(),
+          scope_p, inScopeOnly_p);
     } else if (element_p instanceof AbstractCapabilityExtend) {
       AbstractCapabilityExtend casted = (AbstractCapabilityExtend) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getExtension(), casted.getExtended(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getExtension(), casted.getExtended(), scope_p,
+          inScopeOnly_p);
     } else if (element_p instanceof AbstractCapabilityInclude) {
       AbstractCapabilityInclude casted = (AbstractCapabilityInclude) element_p;
-      result = getTwoEndedElementSemanticID(casted, casted.getInclusion(), casted.getIncluded(), scope_p, inScopeOnly_p);
+      result = getTwoEndedElementSemanticID(casted, casted.getInclusion(), casted.getIncluded(), scope_p,
+          inScopeOnly_p);
     }
     return result;
   }
 
   /**
-   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#getUniqueName(org.eclipse.emf.ecore.EObject, org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
+   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#getUniqueName(org.eclipse.emf.ecore.EObject,
+   *      org.eclipse.emf.diffmerge.api.scopes.IModelScope, boolean)
    */
   @Override
   protected String getUniqueName(EObject element_p, IModelScope scope_p, boolean inScopeOnly_p) {
@@ -340,48 +386,55 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
 
   /**
    * Return the set of Capella types which may normally have no more than one instance per model
+   * 
    * @return a non-null collection
    */
   protected Collection<EClass> getUniquelyOccurringTypes() {
     if (__UNIQUELY_OCCURRING_TYPES == null) {
-      __UNIQUELY_OCCURRING_TYPES =
-          Arrays.asList(
-              // Project roots
-              CapellamodellerPackage.eINSTANCE.getProject(),
-              CapellamodellerPackage.eINSTANCE.getSystemEngineering(),
-              // Architectures
-              OaPackage.eINSTANCE.getOperationalAnalysis(), CtxPackage.eINSTANCE.getSystemAnalysis(), LaPackage.eINSTANCE.getLogicalArchitecture(),
-              PaPackage.eINSTANCE.getPhysicalArchitecture(), EpbsPackage.eINSTANCE.getEPBSArchitecture(),
-              // Contexts
-              OaPackage.eINSTANCE.getOperationalContext(), CtxPackage.eINSTANCE.getSystemContext(), LaPackage.eINSTANCE.getLogicalContext(),
-              PaPackage.eINSTANCE.getPhysicalContext(), EpbsPackage.eINSTANCE.getEPBSContext());
+      __UNIQUELY_OCCURRING_TYPES = Arrays.asList(
+          // Project roots
+          CapellamodellerPackage.eINSTANCE.getProject(), CapellamodellerPackage.eINSTANCE.getSystemEngineering(),
+          // Architectures
+          OaPackage.eINSTANCE.getOperationalAnalysis(), CtxPackage.eINSTANCE.getSystemAnalysis(),
+          LaPackage.eINSTANCE.getLogicalArchitecture(), PaPackage.eINSTANCE.getPhysicalArchitecture(),
+          EpbsPackage.eINSTANCE.getEPBSArchitecture(),
+          // Contexts
+          OaPackage.eINSTANCE.getOperationalContext(), CtxPackage.eINSTANCE.getSystemContext(),
+          LaPackage.eINSTANCE.getLogicalContext(), PaPackage.eINSTANCE.getPhysicalContext(),
+          EpbsPackage.eINSTANCE.getEPBSContext());
     }
     return __UNIQUELY_OCCURRING_TYPES;
   }
 
   /**
-   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#isDiscriminatingContainment(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference)
+   * @see org.polarsys.capella.xmlpivot.merge.specification.MultiCriteriaMatchPolicy#isDiscriminatingContainment(org.eclipse.emf.ecore.EObject,
+   *      org.eclipse.emf.ecore.EReference)
    */
   @Override
   protected boolean isDiscriminatingContainment(EObject element_p, EReference containment_p) {
-    return ((element_p instanceof SystemEngineering) && (CapellamodellerPackage.eINSTANCE.getProject_OwnedModelRoots() == containment_p))
-           || ((containment_p == CsPackage.eINSTANCE.getBlockArchitecture_OwnedRequirementPkgs()) && (((BlockArchitecture) element_p.eContainer())
-               .getOwnedRequirementPkgs().size() == 1)) || super.isDiscriminatingContainment(element_p, containment_p);
+    return ((element_p instanceof SystemEngineering)
+        && (CapellamodellerPackage.eINSTANCE.getProject_OwnedModelRoots() == containment_p))
+        || ((containment_p == CsPackage.eINSTANCE.getBlockArchitecture_OwnedRequirementPkgs())
+            && (((BlockArchitecture) element_p.eContainer()).getOwnedRequirementPkgs().size() == 1))
+        || super.isDiscriminatingContainment(element_p, containment_p);
   }
 
   /**
    * Return whether the given element is considered technical
-   * @param element_p a non-null element
+   * 
+   * @param element_p
+   *          a non-null element
    */
   protected boolean isTechnical(EObject element_p) {
-    return (element_p instanceof AbstractCapabilityGeneralization) || (element_p instanceof AbstractTrace) || (element_p instanceof AbstractDeploymentLink)
-           || (element_p instanceof Generalization)
-           || ((element_p instanceof Involvement) && !(element_p instanceof FunctionalChainInvolvement) && !(element_p instanceof PhysicalPathInvolvement))
-           || (element_p instanceof CapabilityExploitation) || (element_p instanceof ValuePart) || (element_p instanceof KeyValue)
-           || (element_p instanceof EnumerationPropertyLiteral)
-           || ((element_p instanceof EnumerationPropertyType) && (element_p.eContainer() instanceof Project)) || (element_p instanceof InterfaceUse)
-           || (element_p instanceof InterfaceImplementation) || (element_p instanceof AbstractCapabilityExtend)
-           || (element_p instanceof AbstractCapabilityInclude);
+    return (element_p instanceof AbstractCapabilityGeneralization) || (element_p instanceof AbstractTrace)
+        || (element_p instanceof AbstractDeploymentLink) || (element_p instanceof Generalization)
+        || ((element_p instanceof Involvement) && !(element_p instanceof FunctionalChainInvolvement)
+            && !(element_p instanceof PhysicalPathInvolvement))
+        || (element_p instanceof CapabilityExploitation) || (element_p instanceof ValuePart)
+        || (element_p instanceof KeyValue) || (element_p instanceof EnumerationPropertyLiteral)
+        || ((element_p instanceof EnumerationPropertyType) && (element_p.eContainer() instanceof Project))
+        || (element_p instanceof InterfaceUse) || (element_p instanceof InterfaceImplementation)
+        || (element_p instanceof AbstractCapabilityExtend) || (element_p instanceof AbstractCapabilityInclude);
   }
 
 }

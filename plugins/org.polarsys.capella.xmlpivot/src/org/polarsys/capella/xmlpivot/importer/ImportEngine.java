@@ -29,8 +29,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-
-import com.google.common.collect.Collections2;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
@@ -39,22 +44,15 @@ import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
-import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.xmlpivot.common.CapellaDerivedFeatureMetadata;
 import org.polarsys.capella.xmlpivot.common.predicates.EMFPredicates;
 import org.polarsys.capella.xmlpivot.extraction.ConceptualMapping;
+
+import com.google.common.collect.Collections2;
 
 /**
  * <p>
@@ -212,13 +210,11 @@ public class ImportEngine extends EcoreUtil.Copier {
       ((AbstractTrace) link).setSourceElement((TraceableElement) source);
       ((AbstractTrace) link).setTargetElement((TraceableElement) target);
     } else if (link instanceof Involvement){
-      ((Involvement) link).setInvolver((InvolverElement) source);
       ((Involvement) link).setInvolved((InvolvedElement) target);
     } else if (link instanceof Generalization){
       ((Generalization) link).setSub((GeneralizableElement) source);
       ((Generalization) link).setSuper((GeneralizableElement) target);
     } else if (link instanceof CapabilityExploitation){
-      ((CapabilityExploitation) link).setMission((Mission) source);
       ((CapabilityExploitation) link).setCapability((Capability) target);
     } else if (link instanceof AbstractDeploymentLink){
       ((AbstractDeploymentLink) link).setLocation((DeploymentTarget) source);

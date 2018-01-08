@@ -25,17 +25,7 @@ public class FaImportAdapterFactory extends FaAdapterFactory {
     return object_p == ImportAdapter.class || super.isFactoryForType(object_p);
   }
 
-  private Adapter functionalChainInvolvementAdapter;
-  
   private Adapter componentExchangeImportAdapter;
-  
-  @Override
-  public Adapter createFunctionalChainInvolvementAdapter(){
-    if (functionalChainInvolvementAdapter == null){
-      functionalChainInvolvementAdapter = new FunctionalChainInvolvementImportAdapter();
-    }
-    return functionalChainInvolvementAdapter;
-  }
   
   @Override
   public Adapter createComponentExchangeAdapter(){
@@ -50,8 +40,4 @@ public class FaImportAdapterFactory extends FaAdapterFactory {
   protected void associate(Adapter adapter_p, Notifier target_p) {
     /** never associate adapters created by this factory **/
   }
-  
-
-  
-
 }

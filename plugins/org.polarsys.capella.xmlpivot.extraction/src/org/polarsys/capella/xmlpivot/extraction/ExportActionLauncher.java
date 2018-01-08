@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -150,13 +151,13 @@ public class ExportActionLauncher {
   
   public class Result {
 
-    private final EMap<EObject, List<EObject>> _mapping;
+    private final EMap<EObject, Collection<EObject>> _mapping;
 
-    Result(EMap<EObject, List<EObject>> mapping_p) {
-      _mapping = mapping_p;
+    Result(EMap<EObject, Collection<EObject>> eMap) {
+      _mapping = eMap;
     }
 
-    public EMap<EObject, List<EObject>> getRawMapping() {
+    public EMap<EObject, Collection<EObject>> getRawMapping() {
       return _mapping;
     }
     
@@ -184,9 +185,9 @@ public class ExportActionLauncher {
           return o1_p.getNsPrefix().compareTo(o2_p.getNsPrefix());
         }
       });
-      for (Map.Entry<EObject, List<EObject>> entry : _mapping.entrySet()){
+      for (Entry<EObject, Collection<EObject>> entry : _mapping.entrySet()){
         if (entry.getKey() instanceof EPackage){
-          result.add((EPackage) entry.getValue().get(0));
+          result.add((EPackage) entry.getValue().iterator().next());
         }
       }
       return new ArrayList<EPackage>(result);
