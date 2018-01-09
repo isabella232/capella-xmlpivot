@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://www.polarsys.org/capella">
+      Capella Requirements Viewpoint
+   </description>
+   <feature url="features/org.polarsys.capella.xmlpivot.feature_1.2.0.qualifier.jar" id="org.polarsys.capella.xmlpivot.feature" version="1.2.0.qualifier">
+      <category name="org.polarsys.capella.xmlpivot"/>
+   </feature>
+   <category-def name="org.polarsys.capella.xmlpivot" label="XML Pivot Export &amp; Import"/>
+   <repository-reference location="http://download.eclipse.org/diffmerge/releases/0.1.0/edm-coevolution-site" enabled="true" />
+</site>

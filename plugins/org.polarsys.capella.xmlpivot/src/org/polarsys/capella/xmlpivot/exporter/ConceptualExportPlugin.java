@@ -17,15 +17,13 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle.
  * 
  * <p>
- * <strong>EXPERIMENTAL</strong>. This class or interface has been added as
- * part of a work in progress. There is no guarantee that this API will
- * work or that it will remain the same. Please do not use this API without
- * consulting with the Capella team.
+ * <strong>EXPERIMENTAL</strong>. This class or interface has been added as part of a work in progress. There is no
+ * guarantee that this API will work or that it will remain the same. Please do not use this API without consulting with
+ * the Capella team.
  * </p>
  */
 public class ConceptualExportPlugin extends Plugin {
 
- 
   /** A label for dialogs */
   public static final String LABEL = "XML Export";
 
@@ -39,20 +37,12 @@ public class ConceptualExportPlugin extends Plugin {
     // Nothing needed
   }
 
-  
-
-  /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-   */
   @Override
   public void start(BundleContext context) throws Exception {
     super.start(context);
     plugin = this;
   }
 
-  /**
-   * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-   */
   @Override
   public void stop(BundleContext context) throws Exception {
     plugin = null;
@@ -61,11 +51,11 @@ public class ConceptualExportPlugin extends Plugin {
 
   /**
    * Returns the shared instance
+   * 
    * @return the shared instance
    */
   public static ConceptualExportPlugin getDefault() {
     return plugin;
   }
 
-  
 }
