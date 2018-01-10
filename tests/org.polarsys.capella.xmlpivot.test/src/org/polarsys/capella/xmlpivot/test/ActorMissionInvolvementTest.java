@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 public class ActorMissionInvolvementTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testActorMissionInvolvementRoundTrip(){
       util.assertAllLinksRecreated(CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT);

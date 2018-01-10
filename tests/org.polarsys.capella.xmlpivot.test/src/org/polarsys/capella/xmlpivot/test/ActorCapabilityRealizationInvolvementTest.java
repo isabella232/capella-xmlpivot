@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 public class ActorCapabilityRealizationInvolvementTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testActorCapabilityRealizationInvolvementRoundTrip(){
     util.assertAllLinksRecreated(CsPackage.Literals.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT);

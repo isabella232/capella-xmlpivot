@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 public class ComponentExchangeFunctionalExchangeAllocationTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testComponentExchangeFunctionalExchangeAllocationRoundTrip(){
     util.assertAllLinksRecreated(FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION);

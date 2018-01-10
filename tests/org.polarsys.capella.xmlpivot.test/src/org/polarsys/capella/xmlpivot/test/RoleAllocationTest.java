@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 public class RoleAllocationTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testRoleAllocationRoundTrip(){
     util.assertAllLinksRecreated(OaPackage.Literals.ROLE_ALLOCATION);

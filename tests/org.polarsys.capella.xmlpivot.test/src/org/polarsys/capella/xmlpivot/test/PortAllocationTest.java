@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 public class PortAllocationTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testPortAllocationRoundTrip(){
     util.assertAllLinksRecreated(InformationPackage.Literals.PORT_ALLOCATION);

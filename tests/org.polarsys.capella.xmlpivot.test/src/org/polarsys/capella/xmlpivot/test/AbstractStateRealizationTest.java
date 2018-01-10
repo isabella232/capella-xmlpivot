@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 public class AbstractStateRealizationTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testAbstractStateRealizationRoundTrip(){
     util.assertAllLinksRecreated(CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION);

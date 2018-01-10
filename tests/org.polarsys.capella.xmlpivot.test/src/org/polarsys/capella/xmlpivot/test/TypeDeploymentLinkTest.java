@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 public class TypeDeploymentLinkTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testTypeDeploymentLinkRoundTrip(){
     util.assertAllLinksRecreated(DeploymentPackage.Literals.TYPE_DEPLOYMENT_LINK);

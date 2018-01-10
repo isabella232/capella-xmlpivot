@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 public class FunctionalChainRealizationTest extends XMLPivotRoundTripTest {
 
   @Model(
-      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundtrip1/testRoundtrip1.melodymodeller"
+      uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
   public void testFunctionalChainRealizationRoundTrip(){
     util.assertAllLinksRecreated(FaPackage.Literals.FUNCTIONAL_CHAIN_REALIZATION);
