@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <description url="http://www.polarsys.org/capella">
-      Capella Requirements Viewpoint
+      Capella XML Pivot Export &amp; Import
    </description>
-   <feature url="features/org.polarsys.capella.xmlpivot.feature_1.2.0.qualifier.jar" id="org.polarsys.capella.xmlpivot.feature" version="1.2.0.qualifier">
+   <feature id="org.polarsys.capella.xmlpivot.feature" version="1.2.0.qualifier">
+      <category name="org.polarsys.capella.xmlpivot"/>
+   </feature>
+   <feature id="org.polarsys.capella.xmlpivot.feature.source" version="1.2.0.qualifier">
       <category name="org.polarsys.capella.xmlpivot"/>
    </feature>
    <category-def name="org.polarsys.capella.xmlpivot" label="XML Pivot Export &amp; Import"/>
