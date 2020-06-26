@@ -108,13 +108,13 @@ public class XMLPivotDiffOperation extends DiffOperation {
    * @see org.eclipse.emf.diffmerge.impl.helpers.DiffOperation#detectAllAttributeDifferences(org.eclipse.emf.diffmerge.api.IMatch, boolean)
    */
   @Override
-  protected boolean detectAllAttributeDifferences(IMatch match_p, boolean create_p) {
+  protected boolean detectAllAttributeDifferences(IMatch match_p, Role role1, Role role2, boolean create_p) {
     assert (match_p != null) && !match_p.isPartial();
     boolean result = false;
     EClass eClass = match_p.get(Role.TARGET).eClass();
     for (EAttribute attribute : eClass.getEAllAttributes()) {
       if (getCastedDiffPolicy().coverFeature(match_p, attribute)) {
-        result |= detectAttributeDifferences(match_p, attribute, create_p);
+        result |= detectAttributeDifferences(match_p, attribute, role1, role2, create_p);
       }
     }
     return result;
@@ -124,7 +124,7 @@ public class XMLPivotDiffOperation extends DiffOperation {
    * @see org.eclipse.emf.diffmerge.impl.helpers.DiffOperation#detectAttributeDifferences(org.eclipse.emf.diffmerge.api.IMatch, org.eclipse.emf.ecore.EAttribute, boolean)
    */
   @Override
-  protected boolean detectAttributeDifferences(IMatch match_p, EAttribute attribute_p, boolean create_p) {
+  protected boolean detectAttributeDifferences(IMatch match_p, EAttribute attribute_p, Role role1, Role role2, boolean create_p) {
     assert (match_p != null) && !match_p.isPartial() && (attribute_p != null);
     boolean result = true;
     IFeaturedModelScope targetScope = getComparison().getScope(Role.TARGET);
@@ -146,7 +146,7 @@ public class XMLPivotDiffOperation extends DiffOperation {
             // Ordering difference
             if (!create_p)
               return true;
-            createAttributeOrderDifference(match_p, attribute_p, targetValue, matchingReferenceValue.getObject());
+            createAttributeOrderDifference(match_p, attribute_p, targetValue, matchingReferenceValue.getObject(), role1, role2);
             result = true;
             checkOrder = false;
           } else {
