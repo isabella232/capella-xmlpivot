@@ -33,6 +33,7 @@
   <modules>
     <module>features</module>
     <module>plugins</module>
+    <module>tests/org.polarsys.capella.xmlpivot.test</module>
     <module>releng/org.polarsys.capella.xmlpivot.site</module>
   </modules>
 
