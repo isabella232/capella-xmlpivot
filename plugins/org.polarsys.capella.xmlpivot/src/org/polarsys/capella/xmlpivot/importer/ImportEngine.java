@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
@@ -188,6 +189,9 @@ public class ImportEngine extends EcoreUtil.Copier {
     if (link.eContainer() == null){
       while (link.eContainer() == null && context != null){
         for (EReference ref : context.eClass().getEAllContainments()){
+          if (ref == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_MIGRATED_ELEMENTS) {
+            continue;
+          }
           if (ref.getEType().isInstance(link)){
             if (ref.isMany()){
               ((EList) context.eGet(ref)).add(link);
