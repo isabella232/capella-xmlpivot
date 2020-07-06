@@ -25,7 +25,6 @@ import org.polarsys.capella.core.data.epbs.util.EpbsAdapterFactory;
 public class EpbsModelWalkerFactory extends EpbsAdapterFactory implements ComposeableAdapterFactory {
 
   private final EPBSArchitectureWalker epbsArchitectureWalker;  
-  private final EPBSContextWalker epbsContextWalker;
   
   private ComposeableAdapterFactory parentAdapterFactory;
   
@@ -33,10 +32,9 @@ public class EpbsModelWalkerFactory extends EpbsAdapterFactory implements Compos
    * @param epbsArchitectureWalker_p
    * @param epbsContextWalker_p
    */
-  public EpbsModelWalkerFactory(EPBSArchitectureWalker epbsArchitectureWalker_p, EPBSContextWalker epbsContextWalker_p) {
+  public EpbsModelWalkerFactory(EPBSArchitectureWalker epbsArchitectureWalker_p) {
     super();
     epbsArchitectureWalker = epbsArchitectureWalker_p;
-    epbsContextWalker = epbsContextWalker_p;
   }
 
   @Override
@@ -47,11 +45,6 @@ public class EpbsModelWalkerFactory extends EpbsAdapterFactory implements Compos
   @Override
   public Adapter createEPBSArchitectureAdapter() {
     return epbsArchitectureWalker;
-  }
-
-  @Override
-  public Adapter createEPBSContextAdapter(){
-    return epbsContextWalker;
   }
   
   @Override

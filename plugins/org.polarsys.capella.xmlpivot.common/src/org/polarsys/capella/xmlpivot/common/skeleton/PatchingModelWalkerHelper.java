@@ -21,23 +21,21 @@ import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.la.LogicalContext;
+import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.oa.EntityPkg;
@@ -45,12 +43,10 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.RolePkg;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
+import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 
@@ -92,39 +88,12 @@ public class PatchingModelWalkerHelper extends ModelWalkerHelperWrapper {
   }
 
   @Override
-  public EPBSContext getEPBSContext() {
-    EPBSContext context = popFirstProvidedInstance(EPBSContext.class);
-    if (context == null){
-      context = super.getEPBSContext();
-    }
-    return context;
-  }
-
-  @Override
   public LogicalComponent getLogicalComponent() {
     LogicalComponent lc = popFirstProvidedInstance(LogicalComponent.class);
     if (lc == null){
       lc = super.getLogicalComponent();
     }
     return lc;
-  }
-
-  @Override
-  public LogicalContext getLogicalContext() {
-    LogicalContext lc = popFirstProvidedInstance(LogicalContext.class);
-    if (lc == null){
-      lc = super.getLogicalContext();
-    }
-    return lc;
-  }
-
-  @Override
-  public LogicalActorPkg getLogicalActorPkg() {
-    LogicalActorPkg actorPkg = popFirstProvidedInstance(LogicalActorPkg.class);
-    if (actorPkg == null){
-      actorPkg = super.getLogicalActorPkg();
-    }
-    return actorPkg;
   }
 
   @Override
@@ -161,15 +130,6 @@ public class PatchingModelWalkerHelper extends ModelWalkerHelperWrapper {
       pkg = super.getEntityPkg();
     }
     return pkg;
-  }
-
-  @Override
-  public OperationalContext getOperationalContext() {
-    OperationalContext context = popFirstProvidedInstance(OperationalContext.class);
-    if (context == null){
-      context = super.getOperationalContext();
-    }
-    return context;
   }
 
   @Override
@@ -219,41 +179,6 @@ public class PatchingModelWalkerHelper extends ModelWalkerHelperWrapper {
     return missionPkg;
   }
 
-  @Override
-  public ActorPkg getActorPkg() {
-    ActorPkg actorPkg = popFirstProvidedInstance(ActorPkg.class);
-    if (actorPkg == null){
-      actorPkg = super.getActorPkg();
-    }
-    return actorPkg;
-  }
-
-  @Override
-  public SystemContext getSystemContext() {
-    SystemContext context = popFirstProvidedInstance(SystemContext.class);
-    if (context == null){
-      context = super.getSystemContext();
-    }
-    return context;
-  }
-
-  @Override
-  public System getSystem() {
-    System system = popFirstProvidedInstance(System.class);
-    if (system == null){
-      system = super.getSystem();
-    }
-    return system;
-  }
-
-  @Override
-  public PhysicalActorPkg getPhysicalActorPkg() {
-    PhysicalActorPkg actorPkg = popFirstProvidedInstance(PhysicalActorPkg.class);
-    if (actorPkg == null){
-      actorPkg = super.getPhysicalActorPkg();
-    }
-    return actorPkg;
-  }
 
   @Override
   public PhysicalComponent getPhysicalComponent() {
@@ -262,15 +187,6 @@ public class PatchingModelWalkerHelper extends ModelWalkerHelperWrapper {
       component = super.getPhysicalComponent();
     }
     return component;
-  }
-
-  @Override
-  public PhysicalContext getPhysicalContext() {
-    PhysicalContext context = popFirstProvidedInstance(PhysicalContext.class);
-    if (context == null){
-      context = super.getPhysicalContext();
-    }
-    return context;
   }
 
   @Override
@@ -364,6 +280,54 @@ public class PatchingModelWalkerHelper extends ModelWalkerHelperWrapper {
     }
     return sm;
   }
+
+  
+
+  @Override
+  public SystemComponentPkg getSystemComponentPkg() {
+    SystemComponentPkg pkg = popFirstProvidedInstance(SystemComponentPkg.class);
+    if (pkg == null){
+      pkg = super.getSystemComponentPkg();
+    }
+    return pkg;
+  }
+
+  @Override
+  public LogicalComponentPkg getLogicalComponentPkg() {
+    LogicalComponentPkg pkg = popFirstProvidedInstance(LogicalComponentPkg.class);
+    if (pkg == null){
+      pkg = super.getLogicalComponentPkg();
+    }
+    return pkg;
+  }
+
+  @Override
+  public PhysicalComponentPkg getPhysicalComponentPkg() {
+    PhysicalComponentPkg pkg = popFirstProvidedInstance(PhysicalComponentPkg.class);
+    if (pkg == null){
+      pkg = super.getPhysicalComponentPkg();
+    }
+    return pkg;
+  }
+
+  @Override
+  public SystemComponent getSystemComponent() {
+    SystemComponent sc = popFirstProvidedInstance(SystemComponent.class);
+    if (sc == null) {
+      sc = super.getSystemComponent();
+    }
+    return sc;
+  }
+
+  @Override
+  public ConfigurationItemPkg getConfigurationItemPkg() {
+    ConfigurationItemPkg pkg = popFirstProvidedInstance(ConfigurationItemPkg.class);
+    if (pkg == null) {
+      pkg = super.getConfigurationItemPkg();
+    }
+    return pkg;
+  }
+
 
 
   public static class Factory {

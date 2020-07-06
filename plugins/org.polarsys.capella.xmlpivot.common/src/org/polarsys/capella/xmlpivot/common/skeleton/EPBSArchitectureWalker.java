@@ -34,15 +34,15 @@ public class EPBSArchitectureWalker extends BlockArchitectureWalker {
   public void accept(EObject eObject_p, ModelWalkerHelper helper) {
 
     super.accept(eObject_p, helper);
-    
+
     EPBSArchitecture epbs = (EPBSArchitecture) eObject_p;
 
-    if (epbs.getOwnedConfigurationItem() == null){
-      epbs.setOwnedConfigurationItem(helper.getConfigurationItem());
+    if (epbs.getOwnedConfigurationItemPkg() == null) {
+      epbs.setOwnedConfigurationItemPkg(helper.getConfigurationItemPkg());
     }
     
-    if (epbs.getOwnedEPBSContext() == null){
-      epbs.setOwnedEPBSContext(helper.getEPBSContext());
+    if (epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().isEmpty()){
+      epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().add(helper.getConfigurationItem());
     }
 
     if (epbs.getOwnedAbstractCapabilityPkg() == null){
@@ -58,9 +58,8 @@ public class EPBSArchitectureWalker extends BlockArchitectureWalker {
     if (eng != null){
       PhysicalArchitecture pa = SystemEngineeringExt.getOwnedPhysicalArchitecture(eng);
       if (pa != null){
-        ConfigurationItem ci = epbs.getOwnedConfigurationItem();
-        PhysicalComponent pc = pa.getOwnedPhysicalComponent();
-        if (ci != null && pc != null){
+        ConfigurationItem ci = epbs.getOwnedConfigurationItemPkg().getOwnedConfigurationItems().get(0);
+        PhysicalComponent pc = pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().get(0);
           for (PhysicalArtifactRealization par : ci.getOwnedPhysicalArtifactRealizations()){
             if (par.getSourceElement() == ci && par.getTargetElement() == pc){
               return;
@@ -70,12 +69,10 @@ public class EPBSArchitectureWalker extends BlockArchitectureWalker {
           ci.getOwnedPhysicalArtifactRealizations().add(par);
           par.setSourceElement(ci);
           par.setTargetElement(pc);
-        }
       }
     }
   }
-  
-  
+
   private void createPhysicalArchitectureRealization(EPBSArchitecture epbs){
     SystemEngineering se = SystemEngineeringExt.getSystemEngineering(epbs);
     if (se != null){

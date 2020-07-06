@@ -31,9 +31,6 @@ public class XMLPivotTestSuite extends TestSuite {
       addTestSuite(AbstractFunctionAbstractCapabilityInvolvementTest.class);
       addTestSuite(AbstractStateRealizationTest.class);
       addTestSuite(ActivityAllocationTest.class);
-      addTestSuite(ActorCapabilityInvolvementTest.class);
-      addTestSuite(ActorCapabilityRealizationInvolvementTest.class);
-      addTestSuite(ActorMissionInvolvementTest.class);
       addTestSuite(CapabilityExploitationTest.class);
       addTestSuite(CommunicationLinkAllocationTest.class);
       addTestSuite(CommunityOfInterestCompositionTest.class);
@@ -54,14 +51,14 @@ public class XMLPivotTestSuite extends TestSuite {
       addTestSuite(InformationRealizationTest.class);
       addTestSuite(InterfaceImplementationTest.class);
       addTestSuite(InterfaceUseTest.class);
-      addTestSuite(LogicalActorRealizationTest.class);
+   
       addTestSuite(LogicalArchitectureRealizationTest.class);
-      addTestSuite(LogicalComponentRealizationTest.class);
+    
       addTestSuite(LogicalInterfaceRealizationTest.class);
       addTestSuite(OperationAllocationTest.class);
-      addTestSuite(OperationalActorRealizationTest.class);
+  
       addTestSuite(OperationalAnalysisRealizationTest.class);
-      addTestSuite(OperationalEntityRealizationTest.class);
+   
       addTestSuite(OrganisationalUnitCompositionTest.class);
       addTestSuite(OrganisationalUnitTest.class);
       addTestSuite(PhysicalArchitectureRealizationTest.class);
@@ -74,13 +71,11 @@ public class XMLPivotTestSuite extends TestSuite {
       addTestSuite(RoleAllocationTest.class);
       addTestSuite(ScenarioRealizationTest.class);
       addTestSuite(StateTransitionRealizationTest.class);
-      addTestSuite(SystemActorRealizationTest.class);
+    
       addTestSuite(SystemAnalysisRealizationTest.class);
-      addTestSuite(SystemCapabilityInvolvementTest.class);
+   
       addTestSuite(SystemCommunicationHookTest.class);
-      addTestSuite(SystemComponentCapabilityRealizationInvolvementTest.class);
-      addTestSuite(SystemMissionInvolvementTest.class);
-      addTestSuite(SystemRealizationTest.class);
+     
       
       addTestSuite(AbstractCapability__extendingTest.class);
       addTestSuite(AbstractCapability__extendsTest.class);

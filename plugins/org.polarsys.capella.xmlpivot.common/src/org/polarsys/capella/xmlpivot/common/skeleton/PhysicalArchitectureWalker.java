@@ -13,12 +13,12 @@
 package org.polarsys.capella.xmlpivot.common.skeleton;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
+import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -43,38 +43,34 @@ public class PhysicalArchitectureWalker extends BlockArchitectureWalker {
     }
     
     
-    if (pa.getOwnedPhysicalActorPkg() == null){
-      pa.setOwnedPhysicalActorPkg(helper.getPhysicalActorPkg());
+    if (pa.getOwnedPhysicalComponentPkg() == null){
+      pa.setOwnedPhysicalComponentPkg(helper.getPhysicalComponentPkg());
     }
     
-    if (pa.getOwnedPhysicalComponent() == null){
-      pa.setOwnedPhysicalComponent(helper.getPhysicalComponent());
-    }
-    
-    if (pa.getOwnedPhysicalContext() == null){
-      pa.setOwnedPhysicalContext(helper.getPhysicalContext());
+    if (pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().isEmpty()){
+        pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().add(helper.getPhysicalComponent());
     }
     
     createLogicalArchitectureRealization(pa);
     createLogicalComponentRealization(pa);
   }
   
-  
+
   private void createLogicalComponentRealization(PhysicalArchitecture pa){
     SystemEngineering eng = SystemEngineeringExt.getSystemEngineering(pa);
     if (eng != null){
       LogicalArchitecture la = SystemEngineeringExt.getOwnedLogicalArchitecture(eng);
       if (la != null){
-        PhysicalComponent pc = pa.getOwnedPhysicalComponent();
-        LogicalComponent lc = la.getOwnedLogicalComponent();
+        PhysicalComponent pc = pa.getOwnedPhysicalComponentPkg().getOwnedPhysicalComponents().get(0);
+        LogicalComponent lc = la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().get(0);
         if (pc != null && lc != null){
-          for (LogicalComponentRealization lcr : pc.getOwnedLogicalComponentRealizations()){
+          for (ComponentRealization lcr : pc.getOwnedComponentRealizations()){
             if (lcr.getSourceElement() == pc && lcr.getTargetElement() == lc){
               return;
             }
           }
-          LogicalComponentRealization lcr = PaFactory.eINSTANCE.createLogicalComponentRealization();
-          pc.getOwnedLogicalComponentRealizations().add(lcr);
+          ComponentRealization lcr = CsFactory.eINSTANCE.createComponentRealization();
+          pc.getOwnedComponentRealizations().add(lcr);
           lcr.setSourceElement(pc);
           lcr.setTargetElement(lc);
         }

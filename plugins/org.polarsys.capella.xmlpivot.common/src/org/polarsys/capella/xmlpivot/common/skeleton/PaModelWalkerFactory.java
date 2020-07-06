@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-
 import org.polarsys.capella.core.data.pa.util.PaAdapterFactory;
 
 /**
@@ -24,7 +23,6 @@ import org.polarsys.capella.core.data.pa.util.PaAdapterFactory;
 public class PaModelWalkerFactory extends PaAdapterFactory implements ComposeableAdapterFactory {
 
   private final PhysicalArchitectureWalker physicalArchitectureWalker;
-  private final PhysicalContextWalker physicalContextWalker;
   private final PhysicalFunctionPkgWalker physicalFunctionPkgWalker;
 
   private ComposeableAdapterFactory parentAdapterFactory;
@@ -34,10 +32,9 @@ public class PaModelWalkerFactory extends PaAdapterFactory implements Composeabl
    * @param physicalContextWalker_p
    * @param physicalFunctionPkgWalker_p
    */
-  public PaModelWalkerFactory(PhysicalArchitectureWalker physicalArchitectureWalker_p, PhysicalContextWalker physicalContextWalker_p,
+  public PaModelWalkerFactory(PhysicalArchitectureWalker physicalArchitectureWalker_p,
       PhysicalFunctionPkgWalker physicalFunctionPkgWalker_p) {
     physicalArchitectureWalker = physicalArchitectureWalker_p;
-    physicalContextWalker = physicalContextWalker_p;
     physicalFunctionPkgWalker = physicalFunctionPkgWalker_p;
   }
 
@@ -49,11 +46,6 @@ public class PaModelWalkerFactory extends PaAdapterFactory implements Composeabl
   @Override
   public Adapter createPhysicalArchitectureAdapter() {
     return physicalArchitectureWalker;
-  }
-
-  @Override
-  public Adapter createPhysicalContextAdapter(){
-    return physicalContextWalker;
   }
   
   @Override

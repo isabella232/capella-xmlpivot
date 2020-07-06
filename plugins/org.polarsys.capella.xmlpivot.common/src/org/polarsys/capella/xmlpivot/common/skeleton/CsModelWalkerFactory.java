@@ -23,12 +23,10 @@ import org.polarsys.capella.core.data.cs.util.CsAdapterFactory;
  */
 public class CsModelWalkerFactory extends CsAdapterFactory implements ComposeableAdapterFactory {
 
-  private final PartWalker partWalker;
 
   private ComposeableAdapterFactory parentAdapterFactory;
   
-  public CsModelWalkerFactory(PartWalker partWalker_p){
-    partWalker = partWalker_p;
+  public CsModelWalkerFactory(){
   }
   
   @Override
@@ -36,10 +34,6 @@ public class CsModelWalkerFactory extends CsAdapterFactory implements Composeabl
     return super.isFactoryForType(object_p) || object_p == ModelWalker.class;
   }
 
-  @Override
-  public Adapter createPartAdapter() {
-    return partWalker;
-  }
   
   @Override
   protected void associate(Adapter adapter_p, Notifier target_p) {

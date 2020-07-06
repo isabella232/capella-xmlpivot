@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020 THALES GLOBAL SERVICES.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,19 +12,19 @@
  *******************************************************************************/
 package org.polarsys.capella.xmlpivot.test;
 
-import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
 
 
 /**
  * @generated
  */
-public class ActorCapabilityInvolvementTest extends XMLPivotRoundTripTest {
+public class ComponentRealizationTest extends XMLPivotRoundTripTest {
 
   @Model(
       uri="platform:/plugin/org.polarsys.capella.xmlpivot.test/fixtures/testRoundTrip1/testRoundTrip1.melodymodeller"
   )
-  public void testActorCapabilityInvolvementRoundTrip(){
-    util.assertAllLinksRecreated(CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT);
+  public void testOperationalEntityRealizationRoundTrip(){
+    util.assertAllLinksRecreated(CsPackage.Literals.COMPONENT_REALIZATION);
   }
 
 }

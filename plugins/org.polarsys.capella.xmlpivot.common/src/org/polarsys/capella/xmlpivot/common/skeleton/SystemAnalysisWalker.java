@@ -13,11 +13,10 @@
 package org.polarsys.capella.xmlpivot.common.skeleton;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
@@ -41,19 +40,15 @@ public class SystemAnalysisWalker extends BlockArchitectureWalker {
     if (analysis.getOwnedMissionPkg() == null){
       analysis.setOwnedMissionPkg(helper.getMissionPkg());
     }
-    
-    if (analysis.getOwnedActorPkg() == null){
-      analysis.setOwnedActorPkg(helper.getActorPkg());
+
+    if (analysis.getOwnedSystemComponentPkg() == null){
+      analysis.setOwnedSystemComponentPkg(helper.getSystemComponentPkg());
     }
-    
-    if (analysis.getOwnedSystemContext() == null){
-      analysis.setOwnedSystemContext(helper.getSystemContext());
+
+    if (analysis.getOwnedSystemComponentPkg().getOwnedSystemComponents().isEmpty()) {
+      analysis.getOwnedSystemComponentPkg().getOwnedSystemComponents().add(helper.getSystemComponent());
     }
-   
-    if (analysis.getOwnedSystem() == null){
-      analysis.setOwnedSystem(helper.getSystem());
-    }
-    
+
     createOperationalAnalysisRealization(analysis);
     
   }

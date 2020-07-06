@@ -22,15 +22,10 @@ import org.polarsys.capella.core.data.ctx.util.CtxAdapterFactory;
 public class CtxModelWalkerFactory extends CtxAdapterFactory implements ComposeableAdapterFactory {
   
   private final SystemAnalysisWalker systemAnalysisWalker;
-  private final SystemWalker systemWalker;
-  private final SystemContextWalker systemContextWalker;
   private ComposedAdapterFactory parentAdapterFactory;
 
-  public CtxModelWalkerFactory(SystemAnalysisWalker systemAnalysisWalker_p, 
-      SystemWalker systemWalker_p, SystemContextWalker systemContextWalker_p){
+  public CtxModelWalkerFactory(SystemAnalysisWalker systemAnalysisWalker_p){
     systemAnalysisWalker = systemAnalysisWalker_p;
-    systemWalker = systemWalker_p;
-    systemContextWalker = systemContextWalker_p;
   }
   
   @Override
@@ -41,16 +36,6 @@ public class CtxModelWalkerFactory extends CtxAdapterFactory implements Composea
   @Override
   public Adapter createSystemAnalysisAdapter() {
     return systemAnalysisWalker;
-  }
-  
-  @Override
-  public Adapter createSystemAdapter(){
-    return systemWalker;
-  }
-
-  @Override
-  public Adapter createSystemContextAdapter(){
-    return systemContextWalker;
   }
     
   /**

@@ -41,10 +41,6 @@ public class OperationalAnalysisWalker extends BlockArchitectureWalker {
       analysis.setOwnedEntityPkg(helper.getEntityPkg());
     }
     
-    if (analysis.getOwnedOperationalContext() == null){
-      analysis.setOwnedOperationalContext(helper.getOperationalContext());
-    }
-    
   }
   
 }

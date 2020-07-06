@@ -31,11 +31,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -58,16 +56,14 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.xmlpivot.exporter.XMLPivotExport;
 import org.polarsys.capella.xmlpivot.ui.editor.CapellamodellerEditor;
 
@@ -156,10 +152,8 @@ public class ExportHandler extends AbstractHandler implements IHandler {
       }
 
       Shell shell = HandlerUtil.getActiveShell(event);
-      TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(skipped.iterator().next());
-      AdapterFactory factory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
 
-      DataLabelProvider labelProvider = new DataLabelProvider(domain, factory) {
+      DataLabelProvider labelProvider = new DataLabelProvider() {
         @Override
         protected Color getValidElementColor() {
           return Display.getDefault().getSystemColor(SWT.COLOR_RED);

@@ -19,39 +19,33 @@ import java.util.Iterator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.xmlpivot.common.skeleton.CapellacommonModelWalkerFactory;
+import org.polarsys.capella.xmlpivot.common.skeleton.CapellamodellerModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.CsModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.CtxModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.DataPkgWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.DefaultModelWalkerHelper;
 import org.polarsys.capella.xmlpivot.common.skeleton.EPBSArchitectureWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.EPBSContextWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.EpbsModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.InformationModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.LaModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.LogicalArchitectureWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.LogicalContextWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.LogicalFunctionPkgWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.CapellacommonModelWalkerFactory;
-import org.polarsys.capella.xmlpivot.common.skeleton.CapellamodellerModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.OaModelWalkerFactory;
 import org.polarsys.capella.xmlpivot.common.skeleton.OperationalActivityPkgWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.OperationalAnalysisWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.PaModelWalkerFactory;
-import org.polarsys.capella.xmlpivot.common.skeleton.PartWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.PatchingModelWalkerHelper;
 import org.polarsys.capella.xmlpivot.common.skeleton.PhysicalArchitectureWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.PhysicalContextWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.PhysicalFunctionPkgWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.ProjectRepairUtil;
 import org.polarsys.capella.xmlpivot.common.skeleton.ProjectWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.StateMachineWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.SystemAnalysisWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.SystemContextWalker;
 import org.polarsys.capella.xmlpivot.common.skeleton.SystemEngineeringWalker;
-import org.polarsys.capella.xmlpivot.common.skeleton.SystemWalker;
+
 
 /**
  */
@@ -68,12 +62,12 @@ public class ImportAsNewProjectRunner {
 	  CapellacommonModelWalkerFactory capellaCommonWalkerFactory = new CapellacommonModelWalkerFactory(new StateMachineWalker());
 	  CapellamodellerModelWalkerFactory capellaModellerModelWalkerFactory = new CapellamodellerModelWalkerFactory(new ProjectWalker(), new SystemEngineeringWalker());
 	  OaModelWalkerFactory oaModelWalkerFactory = new OaModelWalkerFactory(new OperationalAnalysisWalker(), new OperationalActivityPkgWalker());
-	  LaModelWalkerFactory laModelWalkerFactory = new LaModelWalkerFactory(new LogicalArchitectureWalker(), new LogicalContextWalker(), new LogicalFunctionPkgWalker());
-	  PaModelWalkerFactory paModelWalkerFactory = new PaModelWalkerFactory(new PhysicalArchitectureWalker(), new PhysicalContextWalker(), new PhysicalFunctionPkgWalker());
-	  CtxModelWalkerFactory ctxModelWalkerFactory = new CtxModelWalkerFactory(new SystemAnalysisWalker(), new SystemWalker(), new SystemContextWalker());
+	  LaModelWalkerFactory laModelWalkerFactory = new LaModelWalkerFactory(new LogicalArchitectureWalker(), new LogicalFunctionPkgWalker());
+	  PaModelWalkerFactory paModelWalkerFactory = new PaModelWalkerFactory(new PhysicalArchitectureWalker(), new PhysicalFunctionPkgWalker());
+	  CtxModelWalkerFactory ctxModelWalkerFactory = new CtxModelWalkerFactory(new SystemAnalysisWalker());
 	  InformationModelWalkerFactory informationFactory = new InformationModelWalkerFactory(new DataPkgWalker());
-	  EpbsModelWalkerFactory epbsModelWalkerFactory = new EpbsModelWalkerFactory(new EPBSArchitectureWalker(), new EPBSContextWalker());
-	  CsModelWalkerFactory csModelWalkerFactory = new CsModelWalkerFactory(new PartWalker());
+	  EpbsModelWalkerFactory epbsModelWalkerFactory = new EpbsModelWalkerFactory(new EPBSArchitectureWalker());
+	  CsModelWalkerFactory csModelWalkerFactory = new CsModelWalkerFactory();
 	  util = new ProjectRepairUtil(capellaCommonWalkerFactory, 
 			  capellaModellerModelWalkerFactory, 
 			  oaModelWalkerFactory, 

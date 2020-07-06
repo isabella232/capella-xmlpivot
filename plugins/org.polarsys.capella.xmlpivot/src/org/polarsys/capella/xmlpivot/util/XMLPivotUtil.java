@@ -15,6 +15,7 @@ package org.polarsys.capella.xmlpivot.util;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.Generalization;
@@ -24,23 +25,18 @@ import org.polarsys.capella.core.data.capellamodeller.Folder;
 import org.polarsys.capella.core.data.capellamodeller.Library;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.PhysicalLinkRealization;
 import org.polarsys.capella.core.data.cs.PhysicalPathRealization;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
-import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemCommunication;
 import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
-import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
@@ -94,9 +90,7 @@ import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CapabilityConfiguration;
 import org.polarsys.capella.core.data.oa.CommunityOfInterest;
@@ -111,9 +105,7 @@ import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
 import org.polarsys.capella.core.data.oa.RoleAllocation;
 import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
 import org.polarsys.capella.core.data.oa.Swimlane;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.deployment.ComponentInstance;
@@ -180,24 +172,20 @@ public class XMLPivotUtil {
 		if(object_p instanceof MessageReference ||
 			object_p instanceof SignalInstance ||
 		//cs package
-			object_p instanceof ActorCapabilityRealizationInvolvement ||
+			object_p instanceof CapabilityRealizationInvolvement ||
 			object_p instanceof InterfaceImplementation ||
 			object_p instanceof InterfaceUse ||
 			object_p instanceof PhysicalLinkRealization ||
 			object_p instanceof PhysicalPathRealization ||
 			object_p instanceof PhysicalPortRealization ||
-			object_p instanceof SystemComponentCapabilityRealizationInvolvement ||
 		//ctx package
-			object_p instanceof ActorCapabilityInvolvement ||
-			object_p instanceof ActorMissionInvolvement ||
+			object_p instanceof MissionInvolvement ||
 			object_p instanceof CapabilityExploitation ||
-			object_p instanceof OperationalActorRealization ||
 			object_p instanceof OperationalAnalysisRealization ||
-			object_p instanceof OperationalEntityRealization ||
-			object_p instanceof SystemCapabilityInvolvement ||
+			object_p instanceof ComponentRealization ||
+			object_p instanceof CapabilityInvolvement ||
 			object_p instanceof SystemCommunication ||
 			object_p instanceof SystemCommunicationHook ||
-			object_p instanceof SystemMissionInvolvement ||
 		//deployment package
 			object_p instanceof ComponentInstance ||
 			object_p instanceof ConnectionInstance ||
@@ -263,9 +251,7 @@ public class XMLPivotUtil {
 		//la package
 			object_p instanceof ContextInterfaceRealization ||
 			object_p instanceof LogicalArchitecturePkg ||
-			object_p instanceof SystemActorRealization ||
 			object_p instanceof SystemAnalysisRealization ||
-			object_p instanceof SystemRealization ||
 		//capellacommon package
 			object_p instanceof AbstractStateRealization ||
 			object_p instanceof StateTransitionRealization ||
@@ -293,9 +279,7 @@ public class XMLPivotUtil {
 			object_p instanceof RoleAssemblyUsage ||
 			object_p instanceof Swimlane ||
 		//pa package
-			object_p instanceof LogicalActorRealization ||
 			object_p instanceof LogicalArchitectureRealization ||
-			object_p instanceof LogicalComponentRealization ||
 			object_p instanceof LogicalInterfaceRealization ||
 			object_p instanceof PhysicalArchitecturePkg ||
 		//sharedmodel package

@@ -117,23 +117,11 @@ public class BasicCapellaDerivedFeatureMetaData implements CapellaDerivedFeature
     setAssociationClass(InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDED_ABSTRACT_CAPABILITIES, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND);
     setAssociationClass(InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS, InteractionPackage.Literals.SCENARIO_REALIZATION);
     
-    
+    setAssociationClass(CtxPackage.Literals.SYSTEM_COMPONENT__REALIZED_ENTITIES, CsPackage.Literals.COMPONENT_REALIZATION);
     setAssociationClass(CtxPackage.Literals.SYSTEM_ANALYSIS__ALLOCATED_OPERATIONAL_ANALYSES, CtxPackage.Literals.OPERATIONAL_ANALYSIS_REALIZATION);
     setAssociationClass(CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES, FaPackage.Literals.FUNCTION_REALIZATION);
-    setAssociationClass(CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
-    setAssociationClass(CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
-    setAssociationClass(CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES, CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION);
-    
-    // FIXME these two get in the way of each other, see also EGF-231
-    setAssociationClass(CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS, CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION);
-    setAssociationClass(CtxPackage.Literals.ACTOR__REALIZED_ENTITIES, CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION);
-    //
-    
+    setAssociationClass(CtxPackage.Literals.SYSTEM_COMPONENT__ALLOCATED_SYSTEM_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
     setAssociationClass(CtxPackage.Literals.MISSION__EXPLOITED_CAPABILITIES, CtxPackage.Literals.CAPABILITY_EXPLOITATION);
-    setAssociationClass(CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS, CtxPackage.Literals.ACTOR_MISSION_INVOLVEMENT);
-    setAssociationClass(CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM, CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT);
-    setAssociationClass(CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS, CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT);
-    setAssociationClass(CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM, CtxPackage.Literals.SYSTEM_CAPABILITY_INVOLVEMENT);
     setAssociationClass(CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION);
     
     setAssociationClass(CsPackage.Literals.PART__DEPLOYED_PARTS, DeploymentPackage.Literals.PART_DEPLOYMENT_LINK);
@@ -144,12 +132,8 @@ public class BasicCapellaDerivedFeatureMetaData implements CapellaDerivedFeature
     
     
     setAssociationClass(LaPackage.Literals.LOGICAL_ARCHITECTURE__ALLOCATED_SYSTEM_ANALYSES, LaPackage.Literals.SYSTEM_ANALYSIS_REALIZATION);
-    setAssociationClass(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, CsPackage.Literals.SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT);
-    setAssociationClass(LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, CsPackage.Literals.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT);
-    setAssociationClass(LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS, LaPackage.Literals.SYSTEM_ACTOR_REALIZATION);
-    setAssociationClass(LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
     
-    setAssociationClass(LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS, LaPackage.Literals.SYSTEM_REALIZATION);
+    setAssociationClass(LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEM_COMPONENTS, CsPackage.Literals.COMPONENT_REALIZATION);
     setAssociationClass(LaPackage.Literals.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS, FaPackage.Literals.FUNCTION_REALIZATION);
     setAssociationClass(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION);
     setAssociationClass(LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS, InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION);
@@ -157,12 +141,10 @@ public class BasicCapellaDerivedFeatureMetaData implements CapellaDerivedFeature
     
 //    setHoldingFeature(PaPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT, PaPackage.Literals.PHYSICAL_LINK__LINK_ENDS);
 //    setHoldingFeature(PaPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT, PaPackage.Literals.PHYSICAL_LINK__LINK_ENDS);
-    setAssociationClass(PaPackage.Literals.PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS, PaPackage.Literals.LOGICAL_COMPONENT_REALIZATION);
-    setAssociationClass(PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS, PaPackage.Literals.LOGICAL_ACTOR_REALIZATION);
+    setAssociationClass(PaPackage.Literals.PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS, CsPackage.Literals.COMPONENT_REALIZATION);
     setAssociationClass(PaPackage.Literals.PHYSICAL_COMPONENT__ALLOCATED_PHYSICAL_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
     setAssociationClass(PaPackage.Literals.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS, FaPackage.Literals.FUNCTION_REALIZATION);
     setAssociationClass(PaPackage.Literals.PHYSICAL_ARCHITECTURE__ALLOCATED_LOGICAL_ARCHITECTURES, PaPackage.Literals.LOGICAL_ARCHITECTURE_REALIZATION);
-    setAssociationClass(PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION);
     
     setAssociationClass(EpbsPackage.Literals.EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURES, EpbsPackage.Literals.PHYSICAL_ARCHITECTURE_REALIZATION);
     setAssociationClass(EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION);

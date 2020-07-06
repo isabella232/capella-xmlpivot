@@ -13,14 +13,15 @@
 package org.polarsys.capella.xmlpivot.common.skeleton;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
+import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 /**
@@ -30,46 +31,42 @@ public class LogicalArchitectureWalker extends BlockArchitectureWalker {
   
   @Override
   public void accept(EObject parent_p, ModelWalkerHelper helper) {
-    
+
     super.accept(parent_p, helper);
-    
+
     LogicalArchitecture la = (LogicalArchitecture) parent_p;
     
     if (la.getOwnedFunctionPkg() == null){
       la.setOwnedFunctionPkg(helper.getFunctionPkg(la));
     }
     
-    if (la.getOwnedLogicalComponent() == null){
-      la.setOwnedLogicalComponent(helper.getLogicalComponent());
+    if (la.getOwnedLogicalComponentPkg() == null){
+      la.setOwnedLogicalComponentPkg(helper.getLogicalComponentPkg());
     }
-    
-    if (la.getOwnedLogicalContext() == null){
-      la.setOwnedLogicalContext(helper.getLogicalContext());
-    }
-    
-    if (la.getOwnedLogicalActorPkg() == null){
-      la.setOwnedLogicalActorPkg(helper.getLogicalActorPkg());
+
+    if (la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().isEmpty()) {
+      la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().add(helper.getLogicalComponent());
     }
  
     createSystemAnalysisRealization(la);
     createSystemRealization(la);
   }
-  
+
   private void createSystemRealization(LogicalArchitecture la){
     SystemEngineering eng = SystemEngineeringExt.getSystemEngineering(la);
     if (eng != null){
       SystemAnalysis sa = SystemEngineeringExt.getOwnedSystemAnalysis(eng);
       if (sa != null){
-        LogicalComponent lc = la.getOwnedLogicalComponent();
-        org.polarsys.capella.core.data.ctx.System sys = sa.getOwnedSystem();
+        LogicalComponent lc = la.getOwnedLogicalComponentPkg().getOwnedLogicalComponents().get(0);
+        SystemComponent sys = sa.getOwnedSystemComponentPkg().getOwnedSystemComponents().get(0);
         if (sys != null && lc != null){
-          for (SystemRealization sr : lc.getOwnedSystemRealizations()){
+          for (ComponentRealization sr : lc.getOwnedComponentRealizations()){
             if (sr.getSourceElement() == lc && sr.getTargetElement() == sys){
               return;
             }
           }
-          SystemRealization sr = LaFactory.eINSTANCE.createSystemRealization();
-          lc.getOwnedSystemRealizations().add(sr);
+          ComponentRealization sr = CsFactory.eINSTANCE.createComponentRealization();
+          lc.getOwnedComponentRealizations().add(sr);
           sr.setSourceElement(lc);
           sr.setTargetElement(sys);
         }

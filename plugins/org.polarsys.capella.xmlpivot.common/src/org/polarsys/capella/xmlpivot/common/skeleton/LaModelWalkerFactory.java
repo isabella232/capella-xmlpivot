@@ -24,7 +24,6 @@ import org.polarsys.capella.core.data.la.util.LaAdapterFactory;
 public class LaModelWalkerFactory extends LaAdapterFactory implements ComposeableAdapterFactory {
 
   private final LogicalArchitectureWalker logicalArchitectureWalker;
-  private final LogicalContextWalker logicalContextWalker;
   private final LogicalFunctionPkgWalker logicalFunctionPkgWalker;
   private ComposeableAdapterFactory parentAdapterFactory;
   
@@ -33,10 +32,9 @@ public class LaModelWalkerFactory extends LaAdapterFactory implements Composeabl
    * @param logicalContextWalker_p
    * @param logicalFunctionPkgWalker_p
    */
-  public LaModelWalkerFactory(LogicalArchitectureWalker logicalArchitectureWalker_p, LogicalContextWalker logicalContextWalker_p,
+  public LaModelWalkerFactory(LogicalArchitectureWalker logicalArchitectureWalker_p,
       LogicalFunctionPkgWalker logicalFunctionPkgWalker_p) {
     logicalArchitectureWalker = logicalArchitectureWalker_p;
-    logicalContextWalker = logicalContextWalker_p;
     logicalFunctionPkgWalker = logicalFunctionPkgWalker_p;
   }
 
@@ -48,11 +46,6 @@ public class LaModelWalkerFactory extends LaAdapterFactory implements Composeabl
   @Override
   public Adapter createLogicalArchitectureAdapter() {
     return logicalArchitectureWalker;
-  }
-
-  @Override
-  public Adapter createLogicalContextAdapter(){
-    return logicalContextWalker;
   }
   
   @Override

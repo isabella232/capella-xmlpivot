@@ -38,7 +38,7 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
@@ -140,7 +140,7 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
           list.add("::" + containment.getName()); //$NON-NLS-1$
           result = list;
         }
-      } else if ((container instanceof ComponentContext) && (element_p instanceof Part)
+      } else if ((container instanceof ComponentPkg) && (element_p instanceof Part)
           && isSystemComponent(((Part) element_p).getType())) {
         // Part of System in ComponentContext
         result = getContainerRelativeID(element_p, scope_p, inScopeOnly_p, "::systemPart"); //$NON-NLS-1$
@@ -156,7 +156,7 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
    *          a non-null element
    */
   protected boolean isSystemComponent(Type capellaType_p) {
-    return (capellaType_p instanceof Component) && (capellaType_p.eContainer() instanceof ModellingArchitecture);
+    return (capellaType_p instanceof Component) && !((Component) capellaType_p).isActor() && (capellaType_p.eContainer().eContainer() instanceof ModellingArchitecture);
   }
 
   /**
@@ -401,11 +401,8 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
           OaPackage.eINSTANCE.getOperationalAnalysis(), CtxPackage.eINSTANCE.getSystemAnalysis(),
           LaPackage.eINSTANCE.getLogicalArchitecture(), PaPackage.eINSTANCE.getPhysicalArchitecture(),
           EpbsPackage.eINSTANCE.getEPBSArchitecture(),
-          // Contexts
-          OaPackage.eINSTANCE.getOperationalContext(), CtxPackage.eINSTANCE.getSystemContext(),
-          LaPackage.eINSTANCE.getLogicalContext(), PaPackage.eINSTANCE.getPhysicalContext(),
-          EpbsPackage.eINSTANCE.getEPBSContext(),
-          LibrariesPackage.eINSTANCE.getModelInformation());
+          LibrariesPackage.eINSTANCE.getModelInformation()
+          );
     }
     return __UNIQUELY_OCCURRING_TYPES;
   }
