@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList;
 
 import com.google.common.base.Function;
+
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 
 /**
@@ -38,7 +40,11 @@ public class CrossReferenceIncrementor implements Function<Collection<? extends 
       for (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>)elem.eCrossReferences().iterator(); featureIterator.hasNext(); ) {
         EObject referenced = featureIterator.next();
         EReference eReference = (EReference)featureIterator.feature();
-        if (SimplifiedCapellaMetadata.INSTANCE.isNavigable(eReference) && SimplifiedCapellaMetadata.INSTANCE.isSemantic(referenced.eClass())
+        
+        // FIXME remove when https://bugs.eclipse.org/bugs/show_bug.cgi?id=564962 is fixed
+        if (eReference == LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEM_COMPONENTS) {
+          allCrossRefs.add(referenced);
+        } else if (SimplifiedCapellaMetadata.INSTANCE.isNavigable(eReference) && SimplifiedCapellaMetadata.INSTANCE.isSemantic(referenced.eClass())
             && !SimplifiedCapellaMetadata.INSTANCE.isContainment(eReference) 
             && !SimplifiedCapellaMetadata.INSTANCE.isExcludeFrom(eReference, "xmlpivot")){ //$NON-NLS-1$
           allCrossRefs.add(referenced);

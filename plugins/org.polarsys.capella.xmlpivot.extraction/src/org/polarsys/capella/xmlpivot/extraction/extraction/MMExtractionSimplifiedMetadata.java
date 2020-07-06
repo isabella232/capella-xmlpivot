@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 import org.polarsys.capella.xmlpivot.extraction.mapping.HashIterableInvertibleBinaryRelation;
 
@@ -95,8 +96,13 @@ public class MMExtractionSimplifiedMetadata {
    * SimplifiedCapellaMetadata.isExcludeFrom.
    */
   public boolean isExcluded(EStructuralFeature feature_p) {
-    return _delegate.isExcludeFrom((EStructuralFeature) _mapping.getInverse(feature_p).iterator().next(),
-        XMLPIVOT_PROCESSOR);
+    // FIXME remove when https://bugs.eclipse.org/bugs/show_bug.cgi?id=564962 is fixed
+    if ((EStructuralFeature) _mapping.getInverse(feature_p).iterator().next() == LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEM_COMPONENTS) {
+      return false;
+    } else {
+      return _delegate.isExcludeFrom((EStructuralFeature) _mapping.getInverse(feature_p).iterator().next(),
+          XMLPIVOT_PROCESSOR);
+    }
   }
 
   /**
