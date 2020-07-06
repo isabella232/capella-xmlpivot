@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.3.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.3.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_WDKssDfTEeOD49cbfsUzXw" selectedViews="_WGXKoDfTEeOD49cbfsUzXw _WGftgDfTEeOD49cbfsUzXw _WGiJwDfTEeOD49cbfsUzXw _WGnCQDfTEeOD49cbfsUzXw _WGrTsDfTEeOD49cbfsUzXw _WG4IADfTEeOD49cbfsUzXw _WG-1sDfTEeOD49cbfsUzXw" version="14.1.0.201810161215">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_WDKssDfTEeOD49cbfsUzXw" selectedViews="_WGXKoDfTEeOD49cbfsUzXw _WGftgDfTEeOD49cbfsUzXw _WGiJwDfTEeOD49cbfsUzXw _WGnCQDfTEeOD49cbfsUzXw _WGrTsDfTEeOD49cbfsUzXw _WG4IADfTEeOD49cbfsUzXw _WG-1sDfTEeOD49cbfsUzXw" version="14.3.1.202003261200">
     <semanticResources>AbstractCapabilityIncludeTest.melodymodeller</semanticResources>
     <semanticResources>AbstractCapabilityIncludeTest.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_WGXKoDfTEeOD49cbfsUzXw">
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_0usGcPSSEeeLofeBlbkfDQ" name="[OCB] Operational Capabilities - Operational Capabilities Blank">
+  <diagram:DSemanticDiagram uid="_0usGcPSSEeeLofeBlbkfDQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_XeD9YDfTEeOD49cbfsUzXw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_XeD9YTfTEeOD49cbfsUzXw" type="Sirius" element="_0usGcPSSEeeLofeBlbkfDQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_YTja8DfTEeOD49cbfsUzXw" type="2001" element="_YTZC4DfTEeOD49cbfsUzXw">
@@ -109,7 +109,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalCapabilityPkg" href="AbstractCapabilityIncludeTest.melodymodeller#abe1ae5b-a3e5-4fcd-ad63-c7f79e364498"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_0usGcvSSEeeLofeBlbkfDQ" name="[OCB] Operational Capabilities - Operational Capabilities Blank">
+  <diagram:DSemanticDiagram uid="_0usGcvSSEeeLofeBlbkfDQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_aPuMsDfTEeOD49cbfsUzXw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_aPuMsTfTEeOD49cbfsUzXw" type="Sirius" element="_0usGcvSSEeeLofeBlbkfDQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_aj1bgDfTEeOD49cbfsUzXw" type="2001" element="_ajgrYDfTEeOD49cbfsUzXw">

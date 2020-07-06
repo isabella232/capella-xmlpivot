@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.3.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.3.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description">
-  <viewpoint:DAnalysis uid="_9dMYIEF4EeOThvnrLCXGUQ" selectedViews="_9s3L0EF4EeOThvnrLCXGUQ _9s4Z8EF4EeOThvnrLCXGUQ _9tEAIEF4EeOThvnrLCXGUQ _9tFOQEF4EeOThvnrLCXGUQ _9tNKEEF4EeOThvnrLCXGUQ _9tQ0cEF4EeOThvnrLCXGUQ _9tYwQEF4EeOThvnrLCXGUQ" version="14.1.0.201810161215">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_9dMYIEF4EeOThvnrLCXGUQ" selectedViews="_9s3L0EF4EeOThvnrLCXGUQ _9s4Z8EF4EeOThvnrLCXGUQ _9tEAIEF4EeOThvnrLCXGUQ _9tFOQEF4EeOThvnrLCXGUQ _9tNKEEF4EeOThvnrLCXGUQ _9tQ0cEF4EeOThvnrLCXGUQ _9tYwQEF4EeOThvnrLCXGUQ" version="14.3.1.202003261200">
     <semanticResources>LogicalInterfaceRealizationTest.melodymodeller</semanticResources>
     <semanticResources>LogicalInterfaceRealizationTest.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9s3L0EF4EeOThvnrLCXGUQ">
@@ -29,7 +29,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <table:DTable uid="_BrhJQPSTEeeLofeBlbkfDQ" name="New Physical Interfaces - Logical Interfaces" headerColumnWidth="99">
+  <table:DTable uid="_BrhJQPSTEeeLofeBlbkfDQ" headerColumnWidth="99">
     <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalArchitecture" href="LogicalInterfaceRealizationTest.melodymodeller#02ba2e76-5015-4d4f-b6bc-76daf5d2ac0e"/>
     <lines xmi:type="table:DLine" uid="_1XffgUF8EeOThvnrLCXGUQ" label="Interface 3">
       <target xmi:type="org.polarsys.capella.core.data.cs:Interface" href="LogicalInterfaceRealizationTest.melodymodeller#4e8665d2-4c83-4a7a-87ef-9bcfe60cd94f"/>
