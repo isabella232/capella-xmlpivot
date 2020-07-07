@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.model.semantic.SimplifiedCapellaMetadata;
 import org.polarsys.capella.xmlpivot.extraction.mapping.HashIterableInvertibleBinaryRelation;
@@ -72,7 +73,15 @@ public class MMExtractionSimplifiedMetadata {
    * @return
    */
   public boolean isNavigable(EStructuralFeature feature_p) {
-    return _delegate.isNavigable((EStructuralFeature) _mapping.getInverse(feature_p).iterator().next());
+    
+    EStructuralFeature realFeature = (EStructuralFeature) _mapping.getInverse(feature_p).iterator().next();
+    // REMOVE when 564979 is fixed
+    if (realFeature == CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS) {
+      return false;
+    }
+    
+
+    return _delegate.isNavigable(realFeature);
   }
 
   /**
