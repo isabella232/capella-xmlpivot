@@ -3,10 +3,10 @@
    <description url="http://www.polarsys.org/capella">
       Capella XML Pivot Export &amp; Import
    </description>
-   <feature id="org.polarsys.capella.xmlpivot.feature" version="1.3.0.qualifier">
+   <feature id="org.polarsys.capella.xmlpivot.feature" version="1.4.1.qualifier">
       <category name="org.polarsys.capella.xmlpivot"/>
    </feature>
-   <feature id="org.polarsys.capella.xmlpivot.feature.source" version="1.3.0.qualifier">
+   <feature id="org.polarsys.capella.xmlpivot.feature.source" version="1.4.1.qualifier">
       <category name="org.polarsys.capella.xmlpivot"/>
    </feature>
    <category-def name="org.polarsys.capella.xmlpivot" label="XML Pivot Export &amp; Import"/>
