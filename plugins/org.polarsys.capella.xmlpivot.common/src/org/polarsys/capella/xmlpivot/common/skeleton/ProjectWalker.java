@@ -13,9 +13,12 @@
 package org.polarsys.capella.xmlpivot.common.skeleton;
 
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.libraries.LibrariesFactory;
+import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
  */
@@ -32,7 +35,16 @@ public class ProjectWalker extends AbstractModelWalker {
     }
 
     addProgressStatus(project);
-
+    
+    ModelInformation mi = null;
+    for (ElementExtension e : project.getOwnedExtensions()) {
+      if (e instanceof ModelInformation) {
+        mi = (ModelInformation) e;
+      }
+    }
+    if (mi == null) {
+      project.getOwnedExtensions().add(LibrariesFactory.eINSTANCE.createModelInformation());
+    }
   }
 
   private void addProgressStatus(Project p) {

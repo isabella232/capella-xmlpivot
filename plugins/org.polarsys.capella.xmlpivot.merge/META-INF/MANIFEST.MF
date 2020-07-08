@@ -13,9 +13,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.ui,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.compare,
- org.polarsys.capella.xmlpivot
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.polarsys.capella.xmlpivot,
+ org.polarsys.capella.common.libraries.gen
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.xmlpivot.merge,
- org.polarsys.capella.xmlpivot.merge.specification
+ org.polarsys.capella.xmlpivot.merge.specification,
+ org.polarsys.capella.xmlpivot.merge.temp
 Bundle-Localization: plugin

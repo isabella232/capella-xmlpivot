@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.Generalization;
@@ -403,7 +404,8 @@ public class CapellaMultiCriteriaMatchPolicy extends MultiCriteriaMatchPolicy {
           // Contexts
           OaPackage.eINSTANCE.getOperationalContext(), CtxPackage.eINSTANCE.getSystemContext(),
           LaPackage.eINSTANCE.getLogicalContext(), PaPackage.eINSTANCE.getPhysicalContext(),
-          EpbsPackage.eINSTANCE.getEPBSContext());
+          EpbsPackage.eINSTANCE.getEPBSContext(),
+          LibrariesPackage.eINSTANCE.getModelInformation());
     }
     return __UNIQUELY_OCCURRING_TYPES;
   }

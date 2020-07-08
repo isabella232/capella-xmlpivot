@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.xmlpivot.common
 Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: com.google.guava;visibility:=reexport,
  org.apache.log4j,
  org.eclipse.emf.ecore,
@@ -14,7 +14,8 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.skeleton,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.libraries.gen
 Export-Package: org.polarsys.capella.xmlpivot.common,
  org.polarsys.capella.xmlpivot.common.functions,
  org.polarsys.capella.xmlpivot.common.predicates,
